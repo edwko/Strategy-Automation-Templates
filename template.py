@@ -23,8 +23,8 @@ class settings:
 
     order_size = 0.001
     
-    take_profit_percent: 1.0
-    stop_loss_percent: 1.0
+    take_profit_percent = 1.0
+    stop_loss_percent = 1.0
 
     ohlcv_data = []
 
@@ -153,7 +153,7 @@ async def run():
            
             if last_price < calculate_sma:
 
-                create_market_order()
+                await create_market_order(last_price)
 
                 if settings.use_cooldown:
 
