@@ -8,9 +8,9 @@ from logging import exception
 
 def current_utc_ms():
 
-    return datetime.datetime.utcnow().replace(
+    return int(datetime.datetime.utcnow().replace(
         hour=0, minute=0, second=0, microsecond=0
-        ).timestamp() * 1000
+        ).timestamp() * 1000)
 
 def calculate_percent(percent, price):
 
@@ -120,7 +120,7 @@ async def load_ohlcv_data():
 
     if settings.days_to_load != 0:
 
-        today_start - (settings.days_to_load * 86400000)
+        today_start -= (settings.days_to_load * 86400000)
 
     timestamp = exchange.milliseconds()
 
